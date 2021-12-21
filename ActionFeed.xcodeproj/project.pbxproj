@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		BB38F8BD2771BE7800690B62 /* ActionFeed.docc in Sources */ = {isa = PBXBuildFile; fileRef = BB38F8BC2771BE7800690B62 /* ActionFeed.docc */; };
 		BB38F8C32771BE7800690B62 /* ActionFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB38F8B82771BE7800690B62 /* ActionFeed.framework */; };
-		BB38F8C82771BE7800690B62 /* ActionFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38F8C72771BE7800690B62 /* ActionFeedTests.swift */; };
 		BB38F8C92771BE7800690B62 /* ActionFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = BB38F8BB2771BE7800690B62 /* ActionFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB38F8D32771BEF800690B62 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38F8D22771BEF800690B62 /* FeedItem.swift */; };
 		BB38F8D52771C1D100690B62 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38F8D42771C1D100690B62 /* FeedLoader.swift */; };
+		BB38F8DB2771C63B00690B62 /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38F8DA2771C63B00690B62 /* RemoteFeedLoaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,13 +26,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB38E0FA2771D32100AEEBC5 /* ActionFeed-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ActionFeed-Bridging-Header.h"; sourceTree = "<group>"; };
+		BB38E0FB2771D47200AEEBC5 /* ActionFeedTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ActionFeedTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		BB38F8B82771BE7800690B62 /* ActionFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ActionFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB38F8BB2771BE7800690B62 /* ActionFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionFeed.h; sourceTree = "<group>"; };
 		BB38F8BC2771BE7800690B62 /* ActionFeed.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ActionFeed.docc; sourceTree = "<group>"; };
 		BB38F8C22771BE7800690B62 /* ActionFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ActionFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB38F8C72771BE7800690B62 /* ActionFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionFeedTests.swift; sourceTree = "<group>"; };
 		BB38F8D22771BEF800690B62 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		BB38F8D42771C1D100690B62 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
+		BB38F8DA2771C63B00690B62 /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				BB38F8BB2771BE7800690B62 /* ActionFeed.h */,
 				BB38F8BC2771BE7800690B62 /* ActionFeed.docc */,
 				BB38F8D62771C4D500690B62 /* FeedFeature */,
+				BB38E0FA2771D32100AEEBC5 /* ActionFeed-Bridging-Header.h */,
 			);
 			path = ActionFeed;
 			sourceTree = "<group>";
@@ -85,7 +88,8 @@
 		BB38F8C62771BE7800690B62 /* ActionFeedTests */ = {
 			isa = PBXGroup;
 			children = (
-				BB38F8C72771BE7800690B62 /* ActionFeedTests.swift */,
+				BB38E0FB2771D47200AEEBC5 /* ActionFeedTests-Bridging-Header.h */,
+				BB38F8DA2771C63B00690B62 /* RemoteFeedLoaderTests.swift */,
 			);
 			path = ActionFeedTests;
 			sourceTree = "<group>";
@@ -164,6 +168,7 @@
 					};
 					BB38F8C12771BE7800690B62 = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1310;
 					};
 				};
 			};
@@ -218,7 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB38F8C82771BE7800690B62 /* ActionFeedTests.swift in Sources */,
+				BB38F8DB2771C63B00690B62 /* RemoteFeedLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +384,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -408,7 +413,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -416,6 +421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -430,6 +436,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.verudix.ActionFeedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ActionFeedTests/ActionFeedTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -438,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -452,6 +461,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.verudix.ActionFeedTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ActionFeedTests/ActionFeedTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
