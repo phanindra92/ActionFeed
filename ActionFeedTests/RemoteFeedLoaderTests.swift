@@ -67,14 +67,45 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
         let (sut, client) = makeSUT()
 
-        
-            var capturedResults = [RemoteFeedLoader.Result]()
-            sut.load { capturedResults.append($0) }
-        
-        let emptyListJSON = Data("{\"items\": []}".utf8)
-        client.complete(withStatusCode: 200, data: emptyListJSON)
+        expect(sut, toCompleteWith: .success([]), when: {
+            let emptyListJSON = Data("{\"items\": []}".utf8)
+            client.complete(withStatusCode: 200, data: emptyListJSON)
+        })
+    }
+    
+    func test_load_deliversItemsOn200HttpResponseWithJSONItems() {
+        let (sut, client) = makeSUT()
 
-        XCTAssertEqual(capturedResults, [.success([])])
+        let item1 = FeedItem(
+            id: UUID(),
+            description: nil,
+            location: nil,
+            imageURL: URL(string: "https://a-url.com")!)
+        
+        let item1JSON = [
+            "id": item1.id.uuidString,
+            "image": item1.imageURL.absoluteString
+        ]
+        
+        let item2 = FeedItem(
+            id: UUID(),
+            description: "a description",
+            location: "a location",
+            imageURL: URL(string: "https://another-url.com")!)
+        let item2JSON = [
+            "id": item2.id.uuidString,
+            "description": item2.description,
+            "location": item2.location,
+            "image": item2.imageURL.absoluteString
+        ]
+        
+        let itemsJSON = ["items": [item1JSON, item2JSON]]
+        
+        expect(sut, toCompleteWith: .success([item1, item2]), when: {
+            let jsonData = try! JSONSerialization.data(withJSONObject: itemsJSON)
+            client.complete(withStatusCode: 200, data: jsonData)
+        })
+        
     }
     
     
@@ -92,6 +123,15 @@ class RemoteFeedLoaderTests: XCTestCase {
         
         XCTAssertEqual(capturedResults, [result], file: file, line: line)
     }
+    
+//    private func makeFeedItem(id: UUID, description: String?, location: String?, imageURL: URL) -> FeedItem {
+//        return FeedItem(
+//            id: UUID(),
+//            description: nil,
+//            location: nil,
+//            imageURL: URL(string: "https://a-url.com")!)
+//    }
+    
     private class HTTPClientSpy: HTTPClient {
         private var messages = [(url: URL, completion: (HTTPClientResult) -> Void)]()
         
@@ -111,7 +151,6 @@ class RemoteFeedLoaderTests: XCTestCase {
             let response = HTTPURLResponse(url: requestedURLs[index], statusCode: code, httpVersion: nil, headerFields: nil)!
             messages[index].completion(.success(data, response))
         }
-        
     }
 }
 
