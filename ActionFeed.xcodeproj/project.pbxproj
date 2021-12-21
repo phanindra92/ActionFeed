@@ -77,8 +77,7 @@
 			children = (
 				BB38F8BB2771BE7800690B62 /* ActionFeed.h */,
 				BB38F8BC2771BE7800690B62 /* ActionFeed.docc */,
-				BB38F8D22771BEF800690B62 /* FeedItem.swift */,
-				BB38F8D42771C1D100690B62 /* FeedLoader.swift */,
+				BB38F8D62771C4D500690B62 /* FeedFeature */,
 			);
 			path = ActionFeed;
 			sourceTree = "<group>";
@@ -89,6 +88,15 @@
 				BB38F8C72771BE7800690B62 /* ActionFeedTests.swift */,
 			);
 			path = ActionFeedTests;
+			sourceTree = "<group>";
+		};
+		BB38F8D62771C4D500690B62 /* FeedFeature */ = {
+			isa = PBXGroup;
+			children = (
+				BB38F8D22771BEF800690B62 /* FeedItem.swift */,
+				BB38F8D42771C1D100690B62 /* FeedLoader.swift */,
+			);
+			path = FeedFeature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
