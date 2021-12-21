@@ -50,7 +50,8 @@ class RemoteFeedLoaderTests: XCTestCase {
         let samples = [199, 201, 300, 400, 500]
         samples.enumerated().forEach({ (index, code) in
             expect(sut, toCompleteWith: .failure(.invalidData), when: {
-                client.complete(withStatusCode: code, at: index)
+                let json = makeItemsJSON([])
+                client.complete(withStatusCode: code, data: json, at: index)
             })
         })
     }
@@ -76,36 +77,14 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliversItemsOn200HttpResponseWithJSONItems() {
         let (sut, client) = makeSUT()
 
-        let item1 = FeedItem(
-            id: UUID(),
-            description: nil,
-            location: nil,
-            imageURL: URL(string: "https://a-url.com")!)
+        let item1 = makeFeedItem(id: UUID(), imageURL: URL(string: "https://a-url.com")!)
+        let item2 = makeFeedItem( id: UUID(), description: "a description", location: "a location", imageURL: URL(string: "https://another-url.com")!)
         
-        let item1JSON = [
-            "id": item1.id.uuidString,
-            "image": item1.imageURL.absoluteString
-        ]
-        
-        let item2 = FeedItem(
-            id: UUID(),
-            description: "a description",
-            location: "a location",
-            imageURL: URL(string: "https://another-url.com")!)
-        let item2JSON = [
-            "id": item2.id.uuidString,
-            "description": item2.description,
-            "location": item2.location,
-            "image": item2.imageURL.absoluteString
-        ]
-        
-        let itemsJSON = ["items": [item1JSON, item2JSON]]
-        
-        expect(sut, toCompleteWith: .success([item1, item2]), when: {
-            let jsonData = try! JSONSerialization.data(withJSONObject: itemsJSON)
-            client.complete(withStatusCode: 200, data: jsonData)
+        let items = [item1.model, item2.model]
+        expect(sut, toCompleteWith: .success(items), when: {
+            let json = makeItemsJSON([item1.json, item2.json])
+            client.complete(withStatusCode: 200, data: json)
         })
-        
     }
     
     
@@ -124,13 +103,29 @@ class RemoteFeedLoaderTests: XCTestCase {
         XCTAssertEqual(capturedResults, [result], file: file, line: line)
     }
     
-//    private func makeFeedItem(id: UUID, description: String?, location: String?, imageURL: URL) -> FeedItem {
-//        return FeedItem(
-//            id: UUID(),
-//            description: nil,
-//            location: nil,
-//            imageURL: URL(string: "https://a-url.com")!)
-//    }
+    private func makeFeedItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
+        let item = FeedItem(
+            id: id,
+            description: description,
+            location: location,
+            imageURL: imageURL)
+        
+        let json = [
+            "id": item.id.uuidString,
+            "description": item.description,
+            "location": item.location,
+            "image": item.imageURL.absoluteString
+        ].reduce(into: [String: Any]()) { (acc, e) in
+            if let value = e.value { acc[e.key] = value }
+        }
+        
+        return (item, json)
+    }
+    
+    private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
+        let items = ["items": items]
+        return try! JSONSerialization.data(withJSONObject: items)
+    }
     
     private class HTTPClientSpy: HTTPClient {
         private var messages = [(url: URL, completion: (HTTPClientResult) -> Void)]()
@@ -147,7 +142,7 @@ class RemoteFeedLoaderTests: XCTestCase {
             messages[index].completion(.failure(error))
         }
         
-        func complete(withStatusCode code: Int, data: Data = Data(), at index: Int = 0) {
+        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
             let response = HTTPURLResponse(url: requestedURLs[index], statusCode: code, httpVersion: nil, headerFields: nil)!
             messages[index].completion(.success(data, response))
         }
