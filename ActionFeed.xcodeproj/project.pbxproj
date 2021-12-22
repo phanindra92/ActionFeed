@@ -15,6 +15,7 @@
 		BB38F8D52771C1D100690B62 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38F8D42771C1D100690B62 /* FeedLoader.swift */; };
 		BB38F8DB2771C63B00690B62 /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38F8DA2771C63B00690B62 /* RemoteFeedLoaderTests.swift */; };
 		BBC4329927732C1F00B12509 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4329827732C1F00B12509 /* HTTPClient.swift */; };
+		BBC4329B27732C7900B12509 /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC4329A27732C7900B12509 /* FeedItemsMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		BB38F8D42771C1D100690B62 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		BB38F8DA2771C63B00690B62 /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 		BBC4329827732C1F00B12509 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		BBC4329A27732C7900B12509 /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			children = (
 				BB38E0FD2771E5C700AEEBC5 /* RemoteFeedLoader.swift */,
 				BBC4329827732C1F00B12509 /* HTTPClient.swift */,
+				BBC4329A27732C7900B12509 /* FeedItemsMapper.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				BB38E0FE2771E5C700AEEBC5 /* RemoteFeedLoader.swift in Sources */,
 				BBC4329927732C1F00B12509 /* HTTPClient.swift in Sources */,
 				BB38F8D52771C1D100690B62 /* FeedLoader.swift in Sources */,
+				BBC4329B27732C7900B12509 /* FeedItemsMapper.swift in Sources */,
 				BB38F8D32771BEF800690B62 /* FeedItem.swift in Sources */,
 				BB38F8BD2771BE7800690B62 /* ActionFeed.docc in Sources */,
 			);
