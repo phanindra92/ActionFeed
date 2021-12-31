@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 internal final class FeedItemsMaaper {
     private struct Root: Decodable {
         let items: [Item]
