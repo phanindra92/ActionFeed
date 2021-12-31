@@ -26,6 +26,7 @@
 		BBE31F95277F2BD2005D9EDD /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE31F94277F2BD2005D9EDD /* LocalFeedLoader.swift */; };
 		BBE31F97277F2CC9005D9EDD /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE31F96277F2CC9005D9EDD /* FeedStore.swift */; };
 		BBE31F99277F3C6E005D9EDD /* RemoteFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE31F98277F3C6E005D9EDD /* RemoteFeedItem.swift */; };
+		BBE31F9B277F3CAB005D9EDD /* LocalFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE31F9A277F3CAB005D9EDD /* LocalFeedItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		BBE31F94277F2BD2005D9EDD /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
 		BBE31F96277F2CC9005D9EDD /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		BBE31F98277F3C6E005D9EDD /* RemoteFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedItem.swift; sourceTree = "<group>"; };
+		BBE31F9A277F3CAB005D9EDD /* LocalFeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			children = (
 				BBE31F94277F2BD2005D9EDD /* LocalFeedLoader.swift */,
 				BBE31F96277F2CC9005D9EDD /* FeedStore.swift */,
+				BBE31F9A277F3CAB005D9EDD /* LocalFeedItem.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBE31F9B277F3CAB005D9EDD /* LocalFeedItem.swift in Sources */,
 				BBE31F97277F2CC9005D9EDD /* FeedStore.swift in Sources */,
 				BBC432A5277398B100B12509 /* URLSessionHTTPClient.swift in Sources */,
 				BB38E0FE2771E5C700AEEBC5 /* RemoteFeedLoader.swift in Sources */,
