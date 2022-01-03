@@ -35,6 +35,7 @@
 		BBE31FA927817A84005D9EDD /* FeedCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE31FA827817A84005D9EDD /* FeedCachePolicy.swift */; };
 		BBE31FAB2781CAC8005D9EDD /* CodableFeedStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE31FAA2781CAC8005D9EDD /* CodableFeedStoreTests.swift */; };
 		BBE31FAD2781F7E8005D9EDD /* CodableFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE31FAC2781F7E8005D9EDD /* CodableFeedStore.swift */; };
+		BBE31FAF2782FECC005D9EDD /* FeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE31FAE2782FECC005D9EDD /* FeedStoreSpecs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		BBE31FA827817A84005D9EDD /* FeedCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCachePolicy.swift; sourceTree = "<group>"; };
 		BBE31FAA2781CAC8005D9EDD /* CodableFeedStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFeedStoreTests.swift; sourceTree = "<group>"; };
 		BBE31FAC2781F7E8005D9EDD /* CodableFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableFeedStore.swift; sourceTree = "<group>"; };
+		BBE31FAE2782FECC005D9EDD /* FeedStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpecs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 				BBE31F9D277F4923005D9EDD /* LoadFeedFromCacheUseCaseTests.swift */,
 				BBE31FA2278083AC005D9EDD /* ValidateFeedCacheUseCaseTests.swift */,
 				BBE31FAA2781CAC8005D9EDD /* CodableFeedStoreTests.swift */,
+				BBE31FAE2782FECC005D9EDD /* FeedStoreSpecs.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				BBE31FA7278165A0005D9EDD /* SharedTestHelpers.swift in Sources */,
 				BBE31F92277F056A005D9EDD /* CacheFeedUseCaseTests.swift in Sources */,
 				BBE31F9E277F4923005D9EDD /* LoadFeedFromCacheUseCaseTests.swift in Sources */,
+				BBE31FAF2782FECC005D9EDD /* FeedStoreSpecs.swift in Sources */,
 				BBC432A32773703300B12509 /* XCTestCase+MemoryLeakTraking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
