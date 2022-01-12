@@ -7,7 +7,6 @@
 
 import XCTest
 import ActionFeed
-@testable import ActionFeedTests
 
 class ActionFeedCacheIntegrationTests: XCTestCase {
 
