@@ -32,7 +32,8 @@ class ActionFeedCacheIntegrationTests: XCTestCase {
         let sutToPerformLoad = makeSUT()
         let feed = uniqueImageFeed().models
 
-        expect(sutToPerformSave, toSave: feed)
+        save(feed, to: sutToPerformSave)
+        
         expect(sutToPerformLoad, toLoad: feed)
     }
     
@@ -43,8 +44,8 @@ class ActionFeedCacheIntegrationTests: XCTestCase {
         let firstFeed = uniqueImageFeed().models
         let lastFeed = uniqueImageFeed().models
 
-        expect(sutToPerformFirstSave, toSave: firstFeed)
-        expect(sutToPerformLastSave, toSave: lastFeed)
+        save(firstFeed, to: sutToPerformFirstSave)
+        save(lastFeed, to: sutToPerformLastSave)
         
         expect(sutToPerformLoad, toLoad: lastFeed)
 
@@ -60,7 +61,7 @@ class ActionFeedCacheIntegrationTests: XCTestCase {
         return sut
     }
     
-    private func expect(_ sut: LocalFeedLoader, toSave feed: [FeedImage], file: StaticString = #filePath, line: UInt = #line) {
+    private func save(_ feed: [FeedImage], to sut: LocalFeedLoader, file: StaticString = #filePath, line: UInt = #line) {
         let exp = expectation(description: "Wait for save completion")
         sut.save(feed) { error in
             XCTAssertNil(error, "Expected to save feed successfully")
