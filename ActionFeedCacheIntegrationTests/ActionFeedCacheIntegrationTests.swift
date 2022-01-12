@@ -11,6 +11,16 @@ import ActionFeed
 
 class ActionFeedCacheIntegrationTests: XCTestCase {
 
+    override func setUp() {
+        super.setUp()
+        setupEmptyStoreState()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        undoStoreSideEffects()
+    }
+    
     func test_load_deliversNoItemsOnEmptyCache() {
         let sut = makeSUT()
         
@@ -63,6 +73,18 @@ class ActionFeedCacheIntegrationTests: XCTestCase {
         let sut = LocalFeedLoader(store: store, currentDate: Date.init)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
+    }
+    
+    private func setupEmptyStoreState() {
+        deleteStoreArtifacts()
+    }
+    
+    private func undoStoreSideEffects() {
+        deleteStoreArtifacts()
+    }
+    
+    private func deleteStoreArtifacts() {
+        try? FileManager.default.removeItem(at: testSpecificStoreURL())
     }
     
     private func testSpecificStoreURL() -> URL {
