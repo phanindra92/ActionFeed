@@ -36,15 +36,19 @@ class ActionFeedCacheIntegrationTests: XCTestCase {
         expect(sutToPerformLoad, toLoad: feed)
     }
     
-//    func test_save_overridesItemsSavedOnASeperateInstance() {
-//        let sutToPerformFirstSave = makeSUT()
-//        let sutToPerformLastSave = makeSUT()
-//        let sutToPerformLoad = makeSUT()
-//        let firstFeed = uniqueImageFeed().models
-//        let lastFeed = uniqueImageFeed().models
-//
-//
-//    }
+    func test_save_overridesItemsSavedOnASeperateInstance() {
+        let sutToPerformFirstSave = makeSUT()
+        let sutToPerformLastSave = makeSUT()
+        let sutToPerformLoad = makeSUT()
+        let firstFeed = uniqueImageFeed().models
+        let lastFeed = uniqueImageFeed().models
+
+        expect(sutToPerformFirstSave, toSave: firstFeed)
+        expect(sutToPerformLastSave, toSave: lastFeed)
+        
+        expect(sutToPerformLoad, toLoad: lastFeed)
+
+    }
    
     // MARK: Helpers
     
