@@ -8,8 +8,8 @@
 import XCTest
 import ActionFeed
 
-class CodableFeedStoreTests: XCTestCase, FailableFeedStore {
-    
+class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs {
+
     override func setUp() {
         super.setUp()
         
@@ -113,7 +113,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStore {
     func test_storeSideEffects_runSerially() {
         let sut = makeSUT()
         
-        assertThatSideEffectsRunSearially(on: sut)
+        assertThatSideEffectsRunSerially(on: sut)
     }
 
 
