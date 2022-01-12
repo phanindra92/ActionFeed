@@ -31,7 +31,7 @@ class CoreDataFeedStoreIntegrationTests: XCTestCase {
     func test_retrieve_deliversFeedInsertedOnAnotherInstance() throws {
         let storeToInsert = try makeSUT()
         let storeToLoad = try makeSUT()
-        let feed = uniqueImageFeed()
+        let feed = uniqueImageFeed().local
         let timestamp = Date()
 
         insert((feed, timestamp), to: storeToInsert)
@@ -44,9 +44,9 @@ class CoreDataFeedStoreIntegrationTests: XCTestCase {
         let storeToOverride = try makeSUT()
         let storeToLoad = try makeSUT()
 
-        insert((uniqueImageFeed(), Date()), to: storeToInsert)
+        insert((uniqueImageFeed().local, Date()), to: storeToInsert)
 
-        let latestFeed = uniqueImageFeed()
+        let latestFeed = uniqueImageFeed().local
         let latestTimestamp = Date()
         insert((latestFeed, latestTimestamp), to: storeToOverride)
 
@@ -58,7 +58,7 @@ class CoreDataFeedStoreIntegrationTests: XCTestCase {
         let storeToDelete = try makeSUT()
         let storeToLoad = try makeSUT()
 
-        insert((uniqueImageFeed(), Date()), to: storeToInsert)
+        insert((uniqueImageFeed().local, Date()), to: storeToInsert)
 
         deleteCache(from: storeToDelete)
 

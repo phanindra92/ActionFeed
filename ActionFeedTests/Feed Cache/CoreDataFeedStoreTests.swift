@@ -114,7 +114,7 @@ class CoreDataFeedStoreTests: XCTestCase, FailableFeedStoreSpecs {
 
     func test_delete_deliversErrorOnDeletionError() throws {
         let stub = NSManagedObjectContext.alwaysFailingSaveStub()
-        let feed = uniqueImageFeed()
+        let feed = uniqueImageFeed().local
         let timestamp = Date()
         let sut = try makeSUT()
 
@@ -129,7 +129,7 @@ class CoreDataFeedStoreTests: XCTestCase, FailableFeedStoreSpecs {
 
     func test_delete_hasNoSideEffectsOnDeletionError() throws {
         let stub = NSManagedObjectContext.alwaysFailingSaveStub()
-        let feed = uniqueImageFeed()
+        let feed = uniqueImageFeed().local
         let timestamp = Date()
         let sut = try makeSUT()
 
@@ -145,7 +145,7 @@ class CoreDataFeedStoreTests: XCTestCase, FailableFeedStoreSpecs {
     func test_delete_removesAllObjects() throws {
         let store = try makeSUT()
 
-        insert((uniqueImageFeed(), Date()), to: store)
+        insert((uniqueImageFeed().local, Date()), to: store)
 
         deleteCache(from: store)
 
