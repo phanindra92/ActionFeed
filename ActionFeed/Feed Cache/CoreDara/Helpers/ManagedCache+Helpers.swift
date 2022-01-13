@@ -17,7 +17,7 @@ extension ManagedCache {
     }
 
     static func makeUnique(in context: NSManagedObjectContext) throws -> ManagedCache {
-        try delete(in: context)
+        try find(in: context).map(context.delete)
         return ManagedCache(context: context)
     }
 }

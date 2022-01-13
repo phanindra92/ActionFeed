@@ -71,10 +71,10 @@ public final class CoreDataFeedStore: FeedStore {
                     managedCache.timestamp = timestamp
                     managedCache.feed = NSOrderedSet(array: feed.toManagedFeedImages(in: context))
                     try context.save()
-                    completion(nil)
+                    completion(.success(()))
                 } catch {
                     context.rollback()
-                    completion(error)
+                    completion(.failure(error))
                 }
             }
         }
@@ -86,10 +86,10 @@ public final class CoreDataFeedStore: FeedStore {
             context.perform {
                 do {
                     try ManagedCache.delete(in: context)
-                    completion(nil)
+                    completion(.success(()))
                 } catch {
                     context.rollback()
-                    completion(error)
+                    completion(.failure(error))
                 }
             }
         }
