@@ -51,9 +51,9 @@ public final class CoreDataFeedStore: FeedStore {
             context.perform {
                 do {
                     if let managedCache = try ManagedCache.find(in: context), let feed = managedCache.feed.array as? [ManagedFeedImage] {
-                        completion(.success(.found(feed: feed.toLocal(), timestamp: managedCache.timestamp)))
+                        completion(.success(CachedFeed(feed: feed.toLocal(), timestamp: managedCache.timestamp)))
                     } else {
-                        completion(.success(.empty))
+                        completion(.success(.none))
                     }
                 } catch {
                     completion(.failure(error))
