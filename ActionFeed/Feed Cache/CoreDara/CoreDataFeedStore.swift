@@ -36,8 +36,6 @@ public final class CoreDataFeedStore: FeedStore {
         cleanUpReferencesToPersistentStores()
     }
 
-    private let queue = DispatchQueue(label: "\(CoreDataFeedStore.self)Queue", qos: .userInitiated, attributes: .concurrent)
-
     private func cleanUpReferencesToPersistentStores() {
         context.performAndWait {
             let coordinator = self.container.persistentStoreCoordinator
@@ -47,50 +45,44 @@ public final class CoreDataFeedStore: FeedStore {
 
     public func retrieve(completion: @escaping RetrievalCompletion) {
         let context = context
-        queue.async {
-            context.perform {
-                do {
-                    if let managedCache = try ManagedCache.find(in: context), let feed = managedCache.feed.array as? [ManagedFeedImage] {
-                        completion(.success(CachedFeed(feed: feed.toLocal(), timestamp: managedCache.timestamp)))
-                    } else {
-                        completion(.success(.none))
-                    }
-                } catch {
-                    completion(.failure(error))
+        context.perform {
+            do {
+                if let managedCache = try ManagedCache.find(in: context), let feed = managedCache.feed.array as? [ManagedFeedImage] {
+                    completion(.success(CachedFeed(feed: feed.toLocal(), timestamp: managedCache.timestamp)))
+                } else {
+                    completion(.success(.none))
                 }
+            } catch {
+                completion(.failure(error))
             }
         }
     }
 
     public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
         let context = context
-        queue.async(flags: .barrier) {
-            context.perform {
-                do {
-                    let managedCache = try ManagedCache.makeUnique(in: context)
-                    managedCache.timestamp = timestamp
-                    managedCache.feed = NSOrderedSet(array: feed.toManagedFeedImages(in: context))
-                    try context.save()
-                    completion(.success(()))
-                } catch {
-                    context.rollback()
-                    completion(.failure(error))
-                }
+        context.perform {
+            do {
+                let managedCache = try ManagedCache.makeUnique(in: context)
+                managedCache.timestamp = timestamp
+                managedCache.feed = NSOrderedSet(array: feed.toManagedFeedImages(in: context))
+                try context.save()
+                completion(.success(()))
+            } catch {
+                context.rollback()
+                completion(.failure(error))
             }
         }
     }
 
     public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
         let context = context
-        queue.async(flags: .barrier) {
-            context.perform {
-                do {
-                    try ManagedCache.delete(in: context)
-                    completion(.success(()))
-                } catch {
-                    context.rollback()
-                    completion(.failure(error))
-                }
+        context.perform {
+            do {
+                try ManagedCache.delete(in: context)
+                completion(.success(()))
+            } catch {
+                context.rollback()
+                completion(.failure(error))
             }
         }
     }
